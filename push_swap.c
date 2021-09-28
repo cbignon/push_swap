@@ -6,7 +6,7 @@
 /*   By: cbignon <cbignon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:04:21 by cbignon           #+#    #+#             */
-/*   Updated: 2021/07/16 15:43:40 by cbignon          ###   ########.fr       */
+/*   Updated: 2021/09/24 16:25:41 by cbignon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	push_swap(t_stack *data)
 {
-	if (is_sorted(data->pile_a, data->len_a) == 0)
+	if (is_sorted(data->pile_a, data->len_a) == 1)
 		return ;
 	if (data->count_nb <= 3)
 		ft_sort_3(data);
-	else if (data->count_nb <= 5)
+	else if (data->count_nb == 5)
 		ft_sort_5(data);
-	else if (data->count_nb > 5)
-		ft_sort_100(data);
+	else if (data->count_nb > 3)
+		ft_sort_big(data);
 }
 
 void	ft_sort_5(t_stack *data)
@@ -49,7 +49,7 @@ void	ft_sort_5(t_stack *data)
 	}
 	if (is_sorted(data->pile_a, data->len_a) == -1)
 		swap_a(data);
-	while (data->len_b > 0)
+	while (data->len_a < 5)
 		push_a(data);
 }
 
@@ -68,7 +68,7 @@ void	ft_sort_3(t_stack *data)
 	}
 }
 
-void	ft_sort_100(t_stack *data)
+void	ft_sort_big(t_stack *data)
 {
 	int	i;
 
@@ -97,6 +97,7 @@ void	fill_a(t_stack *data)
 {
 	int	i;
 
+	i = 0;
 	while (data->len_a < data->count_nb)
 	{
 		i = big_in_list(data->pile_b, data->len_b);

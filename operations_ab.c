@@ -6,7 +6,7 @@
 /*   By: cbignon <cbignon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 15:26:22 by cbignon           #+#    #+#             */
-/*   Updated: 2021/07/16 15:27:56 by cbignon          ###   ########.fr       */
+/*   Updated: 2021/09/25 13:30:12 by cbignon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	rev_rotate_ab(t_stack *data)
 	data->pile_b = shift_down(data->pile_b, data->len_b - 1, data->count_nb);
 	data->pile_b[0] = tmp;
 	write(1, "rrr\n", 4);
-	data->count_op += 1;
 }
 
 void	rotate_a_b(t_stack *data)
@@ -37,7 +36,6 @@ void	rotate_a_b(t_stack *data)
 	data->pile_b = shift_up(data->pile_b, data->len_b - 1, data->count_nb);
 	data->pile_b[data->len_b - 1] = tmp;
 	write(1, "rr\n", 3);
-	data->count_op += 1;
 }
 
 void	swap_ab(t_stack *data)
@@ -56,6 +54,5 @@ void	swap_ab(t_stack *data)
 		data->pile_b[0] = data->pile_b[1];
 		data->pile_b[1] = tmp;
 	}
-	data->count_op += 1;
 	write(1, "ss\n", 3);
 }

@@ -6,7 +6,7 @@
 #    By: cbignon <cbignon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/05 16:10:36 by cbignon           #+#    #+#              #
-#    Updated: 2021/07/16 17:15:41 by cbignon          ###   ########.fr        #
+#    Updated: 2021/09/28 09:40:21 by cbignon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,11 @@ CC = clang
 
 INC = ft_push_swap.h
 
-ARG =`ruby -e "puts (-43..456).to_a.shuffle.join(' ')"`
+ARG500 =`ruby -e "puts (-43..456).to_a.shuffle.join(' ')"`
+
+ARG100 =`ruby -e "puts (-49..50).to_a.shuffle.join(' ')"`
+
+ARG1000 =`ruby -e "puts (1..1000).to_a.shuffle.join(' ')"`
 
 OBJETS = $(SOURCES:.c=.o)
 
@@ -48,5 +52,11 @@ fclean : clean
 
 re : fclean all
 
-test : all 
-	./push_swap $(ARG)
+test500 : all 
+	./push_swap $(ARG500) | wc -l
+
+test100 : all
+	./push_swap $(ARG100) | wc -l
+
+test1000 : all
+	./push_swap $(ARG1000) | wc -l

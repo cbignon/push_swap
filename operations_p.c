@@ -6,7 +6,7 @@
 /*   By: cbignon <cbignon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:40:39 by cbignon           #+#    #+#             */
-/*   Updated: 2021/07/16 15:28:19 by cbignon          ###   ########.fr       */
+/*   Updated: 2021/09/25 13:31:36 by cbignon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	push_a(t_stack *data)
 		data->pile_b[i] = data->pile_b[i + 1];
 		i++;
 	}
-	data->count_op += 1;
 	write(1, "pa\n", 3);
 }
 
@@ -50,7 +49,6 @@ void	push_b(t_stack *data)
 		data->pile_a[i] = data->pile_a[i + 1];
 		i++;
 	}
-	data->count_op += 1;
 	write(1, "pb\n", 3);
 }
 

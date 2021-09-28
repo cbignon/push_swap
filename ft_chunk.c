@@ -6,7 +6,7 @@
 /*   By: cbignon <cbignon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 11:20:16 by cbignon           #+#    #+#             */
-/*   Updated: 2021/07/16 16:57:24 by cbignon          ###   ########.fr       */
+/*   Updated: 2021/09/28 12:14:20 by cbignon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void	get_chunk(t_stack *data)
 {
 	if (data->count_nb < 100)
-		data->chunk_nb = 5;
+		data->chunk_nb = 4;
 	else if (data->count_nb >= 500)
+		data->chunk_nb = 15;
+	else if (data->count_nb >= 300)
 		data->chunk_nb = 10;
 	else if (data->count_nb >= 100)
 		data->chunk_nb = 5;
@@ -58,23 +60,8 @@ void	next_chunk(t_stack *data)
 	data->end += data->chunk_size;
 	if (data->end > data->count_nb)
 		data->end = data->count_nb;
-	data->chunk_nb--;
-}
-
-void	sort_last_chunk(t_stack *data)
-{
-	int	i;
-
-	while (is_sorted(data->pile_a, data->len_a) == -1)
-	{
-		i = small_in_list(data->pile_a, data->len_a);
-		while (i-- > 0)
-		{
-			if (i < data->len_a / 2)
-				rotate_a(data);
-			if (i >= data->len_a / 2)
-				rev_rotate_a(data);
-		}
-		push_b(data);
-	}
+	if (data->chunk_nb == 1 && data->end < data->count_nb)
+		data->chunk_nb++;
+	else
+		data->chunk_nb--;
 }
